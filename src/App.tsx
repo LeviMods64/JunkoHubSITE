@@ -12,8 +12,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  const scriptCode = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/JunkoHub/main/script.lua"))()';
-  const discordUrl = 'https://discord.gg/junkohub'; // Placeholder Discord
+  const scriptCode = 'loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/dfd1439234b07fc708b342fe632fc4a207181ec03af70c3062aa229a0c760a0a/download"))()';
+  const discordUrl = 'https://discord.gg'; // Placeholder Discord
 
   const handleCopy = () => {
     navigator.clipboard.writeText(scriptCode);
@@ -117,7 +117,7 @@ export default function App() {
             <div className="space-y-3">
               {[
                 { name: 'Auto Farm Coins & Diamonds', active: true },
-                { name: 'Auto Hatch Huge Pets', active: true },
+                { name: 'Auto Minigames', active: true },
                 { name: 'Auto Complete Obbies', active: true },
                 { name: 'Auto Use Items & Potions', active: true },
               ].map((feature, idx) => (
@@ -145,7 +145,7 @@ export default function App() {
         className="mt-24 md:mt-32 text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Install in Seconds</h2>
-        <p className="text-gray-400 mb-8 md:mb-10 px-4">Copy and paste this code into your Roblox executor (Delta, Xeno, Wave, or any compatible executor)</p>
+        <p className="text-gray-400 mb-8 md:mb-10 px-4">Copy and paste this code into your Roblox executor (Delta, Velocity, Wave, or any compatible executor)</p>
         
         <div className="max-w-3xl mx-auto relative group px-4 sm:px-0">
           <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
@@ -234,7 +234,7 @@ export default function App() {
           className="bg-white/5 border border-purple-500/30 rounded-3xl overflow-hidden group hover:border-purple-500/60 transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.1)] hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]"
         >
           <div className="h-48 bg-gradient-to-br from-purple-900/40 to-fuchsia-900/40 relative overflow-hidden flex items-center justify-center">
-            <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/petsim99/800/400')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-[url('https://tr.rbxcdn.com/180DAY-25b77b4cb49ae9390a08b111a6bff20c/768/432/Image/Webp/noFilter')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity mix-blend-overlay"></div>
             <Gamepad2 className="w-20 h-20 text-purple-400/50 drop-shadow-lg group-hover:scale-110 transition-transform duration-500" />
             <div className="absolute top-4 right-4 bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full border border-green-500/30 flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
@@ -244,6 +244,32 @@ export default function App() {
           <div className="p-6">
             <h3 className="text-2xl font-bold mb-2">Pet Simulator 99</h3>
             <p className="text-gray-400 text-sm mb-6">The ultimate script for PS99. Features auto farm, auto hatch, auto obby, and much more.</p>
+            <button 
+              onClick={() => navigate('home')}
+              className="w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 border border-purple-500/30 py-3 rounded-xl font-semibold transition-colors"
+            >
+              Get Script
+            </button>
+          </div>
+        </motion.div>
+
+          {/* Jujutsu Legacy Card */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-white/5 border border-purple-500/30 rounded-3xl overflow-hidden group hover:border-purple-500/60 transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.1)] hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]"
+        >
+          <div className="h-48 bg-gradient-to-br from-purple-900/40 to-fuchsia-900/40 relative overflow-hidden flex items-center justify-center">
+            <div className="absolute inset-0 bg-[url('https://tr.rbxcdn.com/180DAY-9c82acfebaeefd049e89f2a66e9e210c/768/432/Image/Webp/noFilter')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity mix-blend-overlay"></div>
+            <Gamepad2 className="w-20 h-20 text-purple-400/50 drop-shadow-lg group-hover:scale-110 transition-transform duration-500" />
+            <div className="absolute top-4 right-4 bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full border border-green-500/30 flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              WORKING
+            </div>
+          </div>
+          <div className="p-6">
+            <h3 className="text-2xl font-bold mb-2">Jujutsu Lecacy</h3>
+            <p className="text-gray-400 text-sm mb-6">The ultimate script for Jujutu Legacy. Features auto farm, Set clan, set technique, and much more.</p>
             <button 
               onClick={() => navigate('home')}
               className="w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 border border-purple-500/30 py-3 rounded-xl font-semibold transition-colors"
@@ -407,9 +433,8 @@ export default function App() {
           <div className="space-y-4">
             {[
               { name: 'Pet Simulator 99', status: 'Working', color: 'text-green-400', bg: 'bg-green-400/10' },
-              { name: 'Blox Fruits', status: 'Updating', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
-              { name: 'Blade Ball', status: 'Working', color: 'text-green-400', bg: 'bg-green-400/10' },
-              { name: 'Arsenal', status: 'Patched', color: 'text-red-400', bg: 'bg-red-400/10' },
+              { name: 'Jujutsu Legacy', status: 'Updating', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
+              
             ].map((item, i) => (
               <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                 <span className="text-gray-300 font-medium">{item.name}</span>
@@ -526,12 +551,12 @@ export default function App() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
-          { name: 'Delta', platform: 'Android / Windows', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
+          { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
+          { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-grey-900/40', iconClass: 'text-grey-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
           { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
           { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.' },
-          { name: 'Xeno', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-green-900/40', iconClass: 'text-green-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
-          { name: 'Arceus X', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' },
-          { name: 'Vega X', platform: 'Windows / Android', icon: Monitor, status: 'Working', colorClass: 'from-red-900/40', iconClass: 'text-red-400/50', desc: 'Keyless executor with a massive script hub built-in.' },
+          { name: 'Velocity', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
+          { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' }
         ].map((exec, i) => (
           <motion.div 
             key={i}
@@ -554,7 +579,7 @@ export default function App() {
               <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
               <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
               <button 
-                onClick={() => window.open('https://example.com', '_blank')}
+                onClick={() => window.open('wearedevs.net/exploits', '_blank')}
                 className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />

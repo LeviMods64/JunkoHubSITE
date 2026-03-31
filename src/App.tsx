@@ -531,7 +531,7 @@ export default function App() {
           </div>
           
           <button 
-            onClick={() => window.open('https://roblox.com', '_blank')}
+            onClick={() => window.open('https://www.roblox.com/pt/game-pass/1780331223/', '_blank')}
             className="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white py-4 rounded-xl font-bold shadow-lg shadow-purple-500/20 transition-all active:scale-95 flex items-center justify-center gap-2"
           >
             <Star className="w-5 h-5" />
@@ -552,10 +552,10 @@ export default function App() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
           { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
-          { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-grey-900/40', iconClass: 'text-grey-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
+          { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-gray-900/40', iconClass: 'text-gaey-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
           { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
           { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.' },
-          { name: 'Velocity', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
+          { name: 'Velocity', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
           { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' }
         ].map((exec, i) => (
           <motion.div 
@@ -579,7 +579,7 @@ export default function App() {
               <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
               <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
               <button 
-                onClick={() => window.open('httpswearedevs.net/exploits', '_blank')}
+                onClick={() => window.open('https://wearedevs.net/exploits', '_blank')}
                 className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />

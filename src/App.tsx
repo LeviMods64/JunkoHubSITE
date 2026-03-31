@@ -579,7 +579,7 @@ export default function App() {
               <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
               <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
               <button 
-                onClick={() => window.open('https://wearedevs.net/exploits', '_blank')}
+                onClick={() => window.open('https://wearedevs.net/', '_blank')}
                 className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />

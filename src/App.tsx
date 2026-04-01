@@ -11,6 +11,7 @@ export default function App() {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [executorPlatform, setExecutorPlatform] = useState('all');
   
   const scriptCode = 'loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/dfd1439234b07fc708b342fe632fc4a207181ec03af70c3062aa229a0c760a0a/download"))()';
   const discordUrl = 'https://discord.gg'; // Placeholder Discord
@@ -542,6 +543,32 @@ export default function App() {
     </div>
   );
 
+  const executorsList = [
+    { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
+    { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-gray-900/40', iconClass: 'text-gray-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
+    { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
+    { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.' },
+    { name: 'Velocity', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
+    { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' }
+  ];
+
+  const platformTabs = [
+    { id: 'all', label: 'All Platforms', icon: Terminal },
+    { id: 'windows', label: 'Windows', icon: Terminal },
+    { id: 'android', label: 'Android', icon: Smartphone },
+    { id: 'ios', label: 'iOS', icon: Smartphone },
+    { id: 'mac', label: 'Mac', icon: Monitor }
+  ];
+
+  const getExecutorsByPlatform = (platform: string) => {
+    if (platform === 'all') return executorsList;
+    if (platform === 'windows') return executorsList.filter(e => e.platform === 'Windows');
+    if (platform === 'android') return executorsList.filter(e => e.platform.includes('Android') && !e.platform.includes('iOS'));
+    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('iOS') && !e.platform.includes('Android'));
+    if (platform === 'mac') return executorsList.filter(e => e.platform === 'Mac');
+    return [];
+  };
+
   const renderExecutors = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 md:pt-20 pb-24">
       <div className="text-center mb-16">
@@ -549,46 +576,64 @@ export default function App() {
         <p className="text-gray-400 max-w-2xl mx-auto">Junko Hub is highly optimized and compatible with all major executors. Choose your preferred platform below.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
-          { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-gray-900/40', iconClass: 'text-gaey-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
-          { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
-          { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.' },
-          { name: 'Velocity', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
-          { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' }
-        ].map((exec, i) => (
-          <motion.div 
-            key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-300 group"
+      {/* Platform Tabs */}
+      <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+        {platformTabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setExecutorPlatform(tab.id)}
+            className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all flex items-center gap-2 ${
+              executorPlatform === tab.id
+                ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/20'
+                : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10'
+            }`}
           >
-            <div className={`h-32 bg-gradient-to-br ${exec.colorClass} to-transparent relative overflow-hidden flex items-center justify-center border-b border-white/5`}>
-              <exec.icon className={`w-16 h-16 ${exec.iconClass} group-hover:scale-110 transition-transform duration-500`} />
-              <div className={`absolute top-4 right-4 ${exec.status === 'Working' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'} text-xs font-bold px-3 py-1 rounded-full border flex items-center gap-1`}>
-                {exec.status === 'Working' && <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>}
-                {exec.status.toUpperCase()}
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-2xl font-bold">{exec.name}</h3>
-              </div>
-              <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
-              <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
-              <button 
-                onClick={() => window.open('https://wearedevs.net/', '_blank')}
-                className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                Download
-              </button>
-            </div>
-          </motion.div>
+            <tab.icon className="w-5 h-5" />
+            <span className="hidden sm:inline">{tab.label}</span>
+          </button>
         ))}
       </div>
+
+      {/* Executors Grid */}
+      {getExecutorsByPlatform(executorPlatform).length > 0 ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {getExecutorsByPlatform(executorPlatform).map((exec, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-300 group"
+            >
+              <div className={`h-32 bg-gradient-to-br ${exec.colorClass} to-transparent relative overflow-hidden flex items-center justify-center border-b border-white/5`}>
+                <exec.icon className={`w-16 h-16 ${exec.iconClass} group-hover:scale-110 transition-transform duration-500`} />
+                <div className={`absolute top-4 right-4 ${exec.status === 'Working' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'} text-xs font-bold px-3 py-1 rounded-full border flex items-center gap-1`}>
+                  {exec.status === 'Working' && <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>}
+                  {exec.status.toUpperCase()}
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-2xl font-bold">{exec.name}</h3>
+                </div>
+                <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
+                <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
+                <button 
+                  onClick={() => window.open('https://www.executors.online/executors', '_blank')}
+                  className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  Download
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-12">
+          <p className="text-gray-400 text-lg">Nenhum executor disponível para esta plataforma no momento.</p>
+        </div>
+      )}
     </div>
   );
 

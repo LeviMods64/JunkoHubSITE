@@ -4,7 +4,7 @@
  */
 
 import { useState } from 'react';
-import { Copy, Check, ExternalLink, ChevronRight, Zap, Shield, Layout, Menu, X, Gamepad2, FileText, Lock, MessageSquare, Terminal, Monitor, Smartphone, Download, Crown, Star, Activity, Server } from 'lucide-react';
+import { MonitorSpeaker, TabletSmartphone ,Copy, Check, ExternalLink, ChevronRight, Zap, Shield, Layout, Menu, X, Gamepad2, FileText, Lock, MessageSquare, Terminal, Monitor, Smartphone, Download, Crown, Star, Activity, Server } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -554,8 +554,8 @@ export default function App() {
 
   const platformTabs = [
     { id: 'all', label: 'All Platforms', icon: Terminal },
-    { id: 'windows', label: 'Windows', icon: Terminal },
-    { id: 'android', label: 'Android', icon: Smartphone },
+    { id: 'windows', label: 'Windows', icon: MonitorSpeaker  },
+    { id: 'android', label: 'Android', icon: TabletSmartphone  },
     { id: 'ios', label: 'iOS', icon: Smartphone },
     { id: 'mac', label: 'Mac', icon: Monitor }
   ];
@@ -564,7 +564,7 @@ export default function App() {
     if (platform === 'all') return executorsList;
     if (platform === 'windows') return executorsList.filter(e => e.platform === 'Windows');
     if (platform === 'android') return executorsList.filter(e => e.platform.includes('Android') && !e.platform.includes('iOS'));
-    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('iOS') && !e.platform.includes('Android'));
+    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('Android / iOS') && !e.platform.includes('Android'));
     if (platform === 'mac') return executorsList.filter(e => e.platform === 'Mac');
     return [];
   };

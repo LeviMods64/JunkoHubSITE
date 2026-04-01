@@ -555,7 +555,7 @@ export default function App() {
   const platformTabs = [
     { id: 'all', label: 'All Platforms', icon: Terminal },
     { id: 'windows', label: 'Windows', icon: MonitorSpeaker  },
-    { id: 'android', label: 'Android', icon: TabletSmartphone  },
+    { id: 'Android / iOS', label: 'Android', icon: TabletSmartphone  },
     { id: 'ios', label: 'iOS', icon: Smartphone },
     { id: 'mac', label: 'Mac', icon: Monitor }
   ];
@@ -563,8 +563,8 @@ export default function App() {
   const getExecutorsByPlatform = (platform: string) => {
     if (platform === 'all') return executorsList;
     if (platform === 'windows') return executorsList.filter(e => e.platform === 'Windows');
-    if (platform === 'android') return executorsList.filter(e => e.platform.includes('Android') && !e.platform.includes('iOS'));
-    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('Android / iOS') && !e.platform.includes('Android / iOS'));
+    if (platform === 'Android / iOS') return executorsList.filter(e => e.platform.includes('Android') && !e.platform.includes('iOS'));
+    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('iOS') && !e.platform.includes('Android'));
     if (platform === 'mac') return executorsList.filter(e => e.platform === 'Mac');
     return [];
   };

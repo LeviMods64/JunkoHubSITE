@@ -772,7 +772,7 @@ export default function App() {
       </div>
 
       {/* Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0a0510]/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0a0510] backdrop-blur-md">
         <nav className="flex items-center justify-between px-4 sm:px-6 py-4 max-w-7xl mx-auto w-full">
           <div 
             className="flex items-center gap-2 cursor-pointer" 

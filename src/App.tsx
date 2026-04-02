@@ -559,14 +559,14 @@ export default function App() {
 
 
 
-    { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 95, sunc: 85, isPaid: false, hasKey: true },
-    { name: 'Vega X', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-red-900/40', iconClass: 'text-red-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 90, sunc: 80, isPaid: true, hasKey: false },
+    { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 99, sunc: 100, isPaid: false, hasKey: true },
+    { name: 'Vega X', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-red-900/40', iconClass: 'text-red-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 98, sunc: 98, isPaid: false, hasKey: true },
 
-    { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 85, sunc: 75, isPaid: false, hasKey: false },
-    { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.', unc: 80, sunc: 70, isPaid: false, hasKey: true },
-    { name: 'Cryptic', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-green-900/40', iconClass: 'text-green-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 88, sunc: 78, isPaid: true, hasKey: false },
+    { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 98, sunc: 96, isPaid: true, hasKey: true },
+    { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.', unc: 99, sunc: 100, isPaid: false, hasKey: true },
+    { name: 'Cryptic', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-green-900/40', iconClass: 'text-green-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 98, sunc: 97, isPaid: false, hasKey: true },
  
-      { name: 'Opiumware', platform: 'Mac', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 92, sunc: 82, isPaid: true, hasKey: false },
+      { name: 'Opiumware', platform: 'Mac', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 99, sunc: 100, isPaid: false, hasKey: true },
 
    
   ];

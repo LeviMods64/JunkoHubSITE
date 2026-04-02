@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Custom styles for select dropdowns */
+select {
+  background: linear-gradient(to right, #9333ea, #ec4899) !important;
+  color: white !important;
+  border: none;
+}
+
+select option {
+  background-color: #1a1a1a !important;
+  color: white !important;
+}

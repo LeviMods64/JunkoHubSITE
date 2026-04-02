@@ -600,8 +600,10 @@ export default function App() {
     if (executorType === 'paid') filtered = filtered.filter(e => e.isPaid);
     if (executorType === 'free') filtered = filtered.filter(e => !e.isPaid);
 
-    // Filter by key type
-    if (keyType === 'keyless') filtered = filtered.filter(e => !e.hasKey);
+    // Filter by key type - if keyless is selected, show only free keyless executors
+    if (keyType === 'keyless') {
+      filtered = filtered.filter(e => !e.hasKey && !e.isPaid);
+    }
     if (keyType === 'withkey') filtered = filtered.filter(e => e.hasKey);
 
     return filtered;

@@ -12,6 +12,10 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [executorPlatform, setExecutorPlatform] = useState('all');
+  const [minUNC, setMinUNC] = useState(0);
+  const [minSUNC, setMinSUNC] = useState(0);
+  const [executorType, setExecutorType] = useState('all');
+  const [keyType, setKeyType] = useState('all');
   
   const scriptCode = 'loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/dfd1439234b07fc708b342fe632fc4a207181ec03af70c3062aa229a0c760a0a/download"))()';
   const discordUrl = 'https://discord.gg'; // Placeholder Discord
@@ -544,12 +548,27 @@ export default function App() {
   );
 
   const executorsList = [
-    { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.' },
-    { name: 'Seliware', platform: 'Windows', icon: Terminal, status: 'Working', colorClass: 'from-gray-900/40', iconClass: 'text-gray-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
-    { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 100% UNC support and high execution capability.' },
-    { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.' },
-    { name: 'Velocity', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Lightweight and fast executor for Windows with great compatibility.' },
-    { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.' }
+    { name: 'Seliware', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-gray-900/40', iconClass: 'text-gray-400/50', desc: 'Premium Executor with 99% UNC and 94% sUNC Executes Various Powerful Scripts.', unc: 99, sunc: 94, isPaid: true, hasKey: false },
+    { name: 'Velocity', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-white-900/40', iconClass: 'text-white-400/50', desc: 'Keyless Executor with 99% UNC and sUNC 94% supports several scripts.', unc: 99, sunc: 94, isPaid: false, hasKey: false },
+    { name: 'Wave', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'Premium Windows executor with 99% UNC and 100% sUNC support and high execution capability.', unc: 99, sunc: 100, isPaid: true, hasKey: false },
+    { name: 'Potassium', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-red-900/40', iconClass: 'text-red-400/50', desc: 'Executor with 99% UNC and 100% sUNC and supports several powerful scripts.', unc: 99, sunc: 100, isPaid: true, hasKey: false },
+    { name: 'Cosmic', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-black-900/40', iconClass: 'text-black-400/50', desc: 'Premium Windows executor with 99% UNC and 100% sUNC support and high execution capability.', unc: 99, sunc: 100, isPaid: true, hasKey: false },
+    { name: 'Bunni', platform: 'Windows', icon: Monitor, status: 'Working', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'Free Executor With Key has 99% UNC and 100% sUNC.', unc: 99, sunc: 100, isPaid: false, hasKey: true },
+
+
+
+
+
+    { name: 'Delta', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-purple-900/40', iconClass: 'text-purple-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 95, sunc: 85, isPaid: false, hasKey: true },
+    { name: 'Vega X', platform: 'Android', icon: Smartphone, status: 'Working', colorClass: 'from-red-900/40', iconClass: 'text-red-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 90, sunc: 80, isPaid: true, hasKey: false },
+
+    { name: 'CodeX', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-fuchsia-900/40', iconClass: 'text-fuchsia-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 85, sunc: 75, isPaid: false, hasKey: false },
+    { name: 'Arceus X Neo', platform: 'Android / iOS', icon: Smartphone, status: 'Updating', colorClass: 'from-yellow-900/40', iconClass: 'text-yellow-400/50', desc: 'One of the oldest and most known mobile executors.', unc: 80, sunc: 70, isPaid: false, hasKey: true },
+    { name: 'Cryptic', platform: 'Android / iOS', icon: Smartphone, status: 'Working', colorClass: 'from-green-900/40', iconClass: 'text-green-400/50', desc: 'Excellent mobile executor supporting a wide range of complex scripts.', unc: 88, sunc: 78, isPaid: true, hasKey: false },
+ 
+      { name: 'Opiumware', platform: 'Mac', icon: Monitor, status: 'Working', colorClass: 'from-blue-900/40', iconClass: 'text-blue-400/50', desc: 'A highly stable and popular executor with a great user interface.', unc: 92, sunc: 82, isPaid: true, hasKey: false },
+
+   
   ];
 
   const platformTabs = [
@@ -560,13 +579,32 @@ export default function App() {
     { id: 'mac', label: 'Mac', icon: Monitor }
   ];
 
-  const getExecutorsByPlatform = (platform: string) => {
-    if (platform === 'all') return executorsList;
-    if (platform === 'windows') return executorsList.filter(e => e.platform === 'Windows');
-    if (platform === 'Android / iOS') return executorsList.filter(e => e.platform.includes('Android'));
-    if (platform === 'ios') return executorsList.filter(e => e.platform.includes('iOS'));
-    if (platform === 'mac') return executorsList.filter(e => e.platform === 'Mac');
-    return [];
+  const getFilteredExecutors = () => {
+    let filtered = executorsList;
+
+    // Filter by platform
+    if (executorPlatform !== 'all') {
+      if (executorPlatform === 'windows') filtered = filtered.filter(e => e.platform === 'Windows');
+      if (executorPlatform === 'Android / iOS') filtered = filtered.filter(e => e.platform.includes('Android'));
+      if (executorPlatform === 'ios') filtered = filtered.filter(e => e.platform.includes('iOS'));
+      if (executorPlatform === 'mac') filtered = filtered.filter(e => e.platform === 'Mac');
+    }
+
+    // Filter by UNC
+    filtered = filtered.filter(e => e.unc >= minUNC);
+
+    // Filter by sUNC
+    filtered = filtered.filter(e => e.sunc >= minSUNC);
+
+    // Filter by type (Paid/Free)
+    if (executorType === 'paid') filtered = filtered.filter(e => e.isPaid);
+    if (executorType === 'free') filtered = filtered.filter(e => !e.isPaid);
+
+    // Filter by key type
+    if (keyType === 'keyless') filtered = filtered.filter(e => !e.hasKey);
+    if (keyType === 'withkey') filtered = filtered.filter(e => e.hasKey);
+
+    return filtered;
   };
 
   const renderExecutors = () => (
@@ -600,10 +638,70 @@ export default function App() {
         </AnimatePresence>
       </div>
 
+      {/* Additional Filters */}
+      <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-12">
+        <h3 className="text-xl font-bold mb-6">Advanced Filters</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* UNC Filter */}
+          <div>
+            <label className="block text-sm font-semibold mb-3 text-gray-300">Min UNC: {minUNC}%</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={minUNC}
+              onChange={(e) => setMinUNC(Number(e.target.value))}
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+            />
+          </div>
+
+          {/* sUNC Filter */}
+          <div>
+            <label className="block text-sm font-semibold mb-3 text-gray-300">Min sUNC: {minSUNC}%</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={minSUNC}
+              onChange={(e) => setMinSUNC(Number(e.target.value))}
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+            />
+          </div>
+
+          {/* Type Filter */}
+          <div>
+            <label className="block text-sm font-semibold mb-3 text-gray-300">Type</label>
+            <select
+              value={executorType}
+              onChange={(e) => setExecutorType(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-purple-500"
+            >
+              <option value="all">All Types</option>
+              <option value="free">Free</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+
+          {/* Key Type Filter */}
+          <div>
+            <label className="block text-sm font-semibold mb-3 text-gray-300">Key System</label>
+            <select
+              value={keyType}
+              onChange={(e) => setKeyType(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-purple-500"
+            >
+              <option value="all">All</option>
+              <option value="keyless">Keyless</option>
+              <option value="withkey">With Key</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       {/* Executors Grid */}
-      {getExecutorsByPlatform(executorPlatform).length > 0 ? (
+      {getFilteredExecutors().length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {getExecutorsByPlatform(executorPlatform).map((exec, i) => (
+          {getFilteredExecutors().map((exec, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -622,7 +720,24 @@ export default function App() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-2xl font-bold">{exec.name}</h3>
                 </div>
-                <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">{exec.platform}</div>
+                <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-3">{exec.platform}</div>
+                
+                {/* Specs Badges */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded font-semibold border border-purple-500/30">
+                    UNC: {exec.unc}%
+                  </div>
+                  <div className="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded font-semibold border border-blue-500/30">
+                    sUNC: {exec.sunc}%
+                  </div>
+                  <div className={`${exec.isPaid ? 'bg-red-500/20 text-red-300 border-red-500/30' : 'bg-green-500/20 text-green-300 border-green-500/30'} text-xs px-2 py-1 rounded font-semibold border`}>
+                    {exec.isPaid ? 'Paid' : 'Free'}
+                  </div>
+                  <div className={`${exec.hasKey ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'} text-xs px-2 py-1 rounded font-semibold border`}>
+                    {exec.hasKey ? 'With Key' : 'Keyless'}
+                  </div>
+                </div>
+                
                 <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
                 <button 
                   onClick={() => window.open('https://www.executors.online/executors', '_blank')}

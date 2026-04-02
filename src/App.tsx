@@ -674,7 +674,7 @@ export default function App() {
             <select
               value={executorType}
               onChange={(e) => setExecutorType(e.target.value)}
-              className="w-full bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer"
+              className="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer transition-all"
             >
               <option value="all">All Types</option>
               <option value="free">Free</option>
@@ -688,7 +688,7 @@ export default function App() {
             <select
               value={keyType}
               onChange={(e) => setKeyType(e.target.value)}
-              className="w-full bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer"
+              className="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer transition-all"
             >
               <option value="all">All</option>
               <option value="keyless">Keyless</option>

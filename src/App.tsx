@@ -674,7 +674,7 @@ export default function App() {
             <select
               value={executorType}
               onChange={(e) => setExecutorType(e.target.value)}
-              className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-purple-500"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer"
             >
               <option value="all">All Types</option>
               <option value="free">Free</option>
@@ -688,7 +688,7 @@ export default function App() {
             <select
               value={keyType}
               onChange={(e) => setKeyType(e.target.value)}
-              className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-purple-500"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 font-semibold cursor-pointer"
             >
               <option value="all">All</option>
               <option value="keyless">Keyless</option>
@@ -733,9 +733,11 @@ export default function App() {
                   <div className={`${exec.isPaid ? 'bg-red-500/20 text-red-300 border-red-500/30' : 'bg-green-500/20 text-green-300 border-green-500/30'} text-xs px-2 py-1 rounded font-semibold border`}>
                     {exec.isPaid ? 'Paid' : 'Free'}
                   </div>
-                  <div className={`${exec.hasKey ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'} text-xs px-2 py-1 rounded font-semibold border`}>
-                    {exec.hasKey ? 'With Key' : 'Keyless'}
-                  </div>
+                  {!exec.isPaid && (
+                    <div className={`${exec.hasKey ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'} text-xs px-2 py-1 rounded font-semibold border`}>
+                      {exec.hasKey ? 'With Key' : 'Keyless'}
+                    </div>
+                  )}
                 </div>
                 
                 <p className="text-gray-400 text-sm mb-6 h-10">{exec.desc}</p>
